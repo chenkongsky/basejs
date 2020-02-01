@@ -171,5 +171,25 @@ Vue.directive('drag',{
       // document.getElementById("rong-sendBtn").click()
     }
   })
-})
+}),
   
+// 位运算  星期
+let arr1 = [1, 2, 4, 8, 16, 32, 64]
+let arr2 = []
+weekCycle = (function check (arg) {
+  if (Number.isInteger(arg) && arg > 0) {
+    let len = arg.toString(2).length
+    if (len >= arr1.length) {
+      arg = arg - arr1[arr1.length - 1]
+      arr2.push(arr1[arr1.length - 1])
+      check(arg)
+    } else {
+      arg = arg - arr1[len - 1]
+      arr2.push(arr1[len - 1])
+      check(arg)
+    }
+    return arr2
+  } else {
+    return false
+  }
+})(weekCycle * 1)
